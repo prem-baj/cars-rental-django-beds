@@ -1,4 +1,4 @@
-# Setting up Python Virtual Environment using venv package and existing Django project
+# Car Rental Django Project
 
 ## Prerequisites
 - Python 3.8+ installed on your system
