@@ -14,7 +14,8 @@ def index(request):
 
 @login_required
 def order_list(request):
-    orders = Order.objects.all()
+    user = request.user
+    orders = Order.objects.filter(client=user.id)
     return render(request, 'orders_list.html', {'orders': orders})
 
 @login_required
@@ -25,7 +26,7 @@ def create_order(request):
 
         if form.is_valid():
             event = form.save(commit=False)
-            #event.customer = request.user
+            event.client = request.user
             event.save()
             return redirect('index')
         else:

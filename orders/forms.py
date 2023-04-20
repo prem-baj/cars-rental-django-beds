@@ -11,8 +11,8 @@ class InputForm(forms.ModelForm):
         ('1', 'Card'),
         ('2', 'Cash'),
     )
-    pick_up_date = forms.DateTimeField( widget=forms.TextInput(attrs={'id':'pick_up_location','class': 'datetimepicker-input', 'data-toggle':'datetimepicker', 'data-target':'pick_up_location'}))
-    drop_off_date = forms.DateTimeField( widget=forms.TextInput(attrs={'id':'pick_up_location','class': 'datetimepicker-input', 'data-toggle':'datetimepicker', 'data-target':'pick_up_location'}))
+    pick_up_date = forms.DateTimeField(help_text="Enter date and time in format: YYYY-MM-DD")
+    drop_off_date = forms.DateTimeField(help_text="Enter date and time in format: YYYY-MM-DD")
     payment_method = forms.ChoiceField(widget=forms.RadioSelect, choices=PAYMENT_METHODS)
     car = forms.ModelChoiceField(queryset=Car.objects.all(), label='Car')
 
