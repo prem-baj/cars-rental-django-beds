@@ -1,5 +1,12 @@
 # Car Rental Django Project
 
+## Download the project
+1. In terminal, navigate to directory you want to create a project in
+2. Clone repository
+```bash
+https://github.com/prem-baj/cars-rental-django-beds.git
+```
+
 ## Prerequisites
 - Python 3.8+ installed on your system
 
