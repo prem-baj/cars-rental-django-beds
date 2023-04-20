@@ -1,17 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load crispy_forms_tags static %}
+{% block js %}
+    {{ block.super}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="{% static 'tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'funct.js' %}"></script>
+    <script src="{% static 'style.css' %}"></script>
+{% endblock %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/tempusdominus-bootstrap-4.min.css' %}">
+{% endblock %}
+
+{% block content %}
 <h1>List of Orders</h1>
-<ul>
-  {% for order in orders %}
-  <li>
-    <h2>{{ order.car }} {{ order.pick_up_date }} {{ order.drop_off_date}} </h2>
-  </li>
-  {% endfor %}
-</ul>
-</body>
-</html>
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Pick up date</th>
+        <th scope="col">Drop off date</th>
+        <th scope="col">Car</th>
+        <th scope="col">Payment method</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.pick_up_date }}</th>
+        <td>{{ order.drop_off_date}}</td>
+        <td>{{ order.car}}</td>
+        <td>
+          {% if order.payment_method == '1' %}
+              Card
+          {% elif order.payment_method == '2' %}
+              Cash
+          {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-5m84n@88a&gzx=r1-mq^+)@qfe74rz(djhy$o=b=3c11nn7y*)
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Application definition
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cars.apps.CarsConfig',
     'orders.apps.OrdersConfig',
+    'crispy_forms',
+    "bootstrap_datepicker_plus",
 ]
 
 MIDDLEWARE = [
@@ -118,7 +121,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
