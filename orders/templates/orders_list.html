@@ -13,15 +13,32 @@
 {% endblock %}
 
 {% block content %}
-<h1 style="text-align:center;">Book your free trip</h1>
-<div id="results">
-<div class="container-fluid">
 <h1>List of Orders</h1>
-<ul>
-  {% for order in orders %}
-  <li>
-    <h2>{{ order.car }} {{ order.pick_up_date }} {{ order.drop_off_date}} </h2>
-  </li>
-  {% endfor %}
-</ul>
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Pick up date</th>
+        <th scope="col">Drop off date</th>
+        <th scope="col">Car</th>
+        <th scope="col">Payment method</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.pick_up_date }}</th>
+        <td>{{ order.drop_off_date}}</td>
+        <td>{{ order.car}}</td>
+        <td>
+          {% if order.payment_method == '1' %}
+              Card
+          {% elif order.payment_method == '2' %}
+              Cash
+          {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

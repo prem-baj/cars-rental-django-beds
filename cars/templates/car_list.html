@@ -15,22 +15,21 @@
 {% block content %}
 
 
-<div id="results">
-<div class="container-fluid">
 <h1>List of Cars</h1>
-
+<div class="container-fluid">
 <ul>
   {% for car in cars %}
  
   <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">{{ car.model.name }} {{ car.name}} {{car.colour}} </h5>
+    <h5 class="card-title">{{ car.model.name }} {{ car.name}}</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">{{ car.model.brand.name }}</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  
+    <p class="card-text">Color: {{ car.colour }}</p>
+    <p class="card-text">Production year: {{ car.production_year }}</p>
   </div>
 </div>
   {% endfor %}
 </ul>
+</div>
 {% endblock %}
 
