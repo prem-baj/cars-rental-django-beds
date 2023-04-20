@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import InputForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -11,12 +12,12 @@ from .models import Order
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-
+@login_required
 def order_list(request):
     orders = Order.objects.all()
     return render(request, 'orders_list.html', {'orders': orders})
 
-
+@login_required
 def create_order(request):
 
     form = InputForm(request.POST or None)
