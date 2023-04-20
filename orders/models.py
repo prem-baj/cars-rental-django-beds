@@ -14,6 +14,6 @@ class Order(models.Model):
     drop_off_date = models.DateTimeField(blank=False, null=False)
     payment_method = models.CharField(max_length=1, choices=PAYMENT_METHODS)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-
+    
     def __str__(self):
         return f"{self.car} => {self.pick_up_date} => {self.drop_off_date}"

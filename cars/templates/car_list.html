@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load crispy_forms_tags static %}
+{% block js %}
+    {{ block.super}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="{% static 'tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'funct.js' %}"></script>
+    <script src="{% static 'style.css' %}"></script>
+{% endblock %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/tempusdominus-bootstrap-4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
 <h1>List of Cars</h1>
+<div class="container-fluid">
 <ul>
   {% for car in cars %}
-  <li>
-    <h2>{{ car.model.brand.name }} {{ car.model.name }} {{ car.name}} </h2>
-  </li>
+ 
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ car.model.name }} {{ car.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ car.model.brand.name }}</h6>
+    <p class="card-text">Color: {{ car.colour }}</p>
+    <p class="card-text">Production year: {{ car.production_year }}</p>
+  </div>
+</div>
   {% endfor %}
 </ul>
-</body>
-</html>
+</div>
+{% endblock %}
+
